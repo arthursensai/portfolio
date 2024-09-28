@@ -1,0 +1,271 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html {
+    position: relative;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+}
+
+body {
+    font-family: "Fira Sans Condensed", sans-serif;
+    margin: 0 0 10vh;
+}
+
+header {
+    width: 100%;
+    border-bottom: 1px white solid;
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav  * > {
+    margin: 2%;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+    padding: 4%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.hero div {
+    width: 50%;
+    height: 100%;
+    margin: 1%;
+}
+
+.hero-paragraph {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+    width: 50%;
+    height: 100%;
+    border: 3px black solid;
+    border-radius: 58% 42% 45% 55% / 33% 44% 56% 67%;
+    background: linear-gradient(180deg, #37505C 0%, #113537 100%);
+    color: #FFEAD0;
+    text-align: center;
+    padding: 7%;
+    transition: all 0.5s ease-out;
+    cursor: pointer;
+    filter: drop-shadow(5px 5px 100px #000);
+}
+
+.hero-paragraph > * {
+    margin: 2%;
+}
+
+.hero-paragraph:hover {
+    filter: drop-shadow(-5px -5px 100px #4f4848);
+    line-height: 28px;
+    font-size: 20px;
+}
+
+.main-img {
+    width: 80%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    border-radius: 5px;
+}
+
+.social-media h2,
+.projects h2 {
+    text-align: center;
+}
+
+.social-media {
+    border: 3px solid black;
+    border-radius: 40px;
+    padding: 4% 2%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0;
+}
+
+.social-media-boxes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.social-media-box {
+    box-shadow: 0 0 10px rgb(209, 197, 197);
+    border-radius: 10px;
+    padding:  6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5% 0;
+    transition: all 0.5s ease-out;
+    position: relative;
+    cursor: pointer;
+}
+
+.social-media-box:hover {
+    padding: 7%;
+    margin: 5% 0;
+    box-shadow: none;
+}
+
+.social-media-box:hover::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    height: 107%;
+    width: 107%;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+.social-media-box a {
+    text-align: center;
+}
+
+.fa-brands {
+    font-size: 48px;
+    margin-bottom: 10%;
+}
+
+.instagram:hover::after {
+    background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045); 
+}
+
+.whatsapp:hover::after {
+    background: linear-gradient(45deg, #E5FFCC, #1EBEA5, #00E676, #D0E9EA, #EDF8F5, #ffffff);
+}
+
+.facebook:hover::after {
+    background: linear-gradient(45deg, #3b5998, #8b9dc3, #dfe3ee, #f7f7f7, #ffffff);
+}
+
+.projects {
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    border-radius: 25px;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.project > * {
+    margin: 2%;
+}
+
+.projects-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+.project {
+    width: 30%;
+    min-width: 200px;
+    min-height: 150px;
+    height: 100%;
+    border: 2px #0e0d0d solid;
+    border-radius: 20px;
+    padding: 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 5%;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 3%;
+    transition: all 0.5s ease-in;
+    cursor: pointer;
+}
+
+.project.dimmed,
+.projects.dimmed {
+    background-color: rgb(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.project h3 {
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.project button {
+    padding: 7% 9%;
+    border: none;
+    background-color: #3489db;
+    color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project button::after {
+    content: 'take a look';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    border-radius: 50px;
+    animation: none;
+}
+
+.project button:hover::after {
+    animation: expand 0.4s ease forwards;
+}
+
+footer {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 2%;
+}
+
+a {
+    color: rgb(209, 197, 197);
+}
+
+/* keyb frames */
+
+@keyframes expand {
+    0% {
+        width: 100%;
+        height: 100%;
+        background: transparent;
+    }
+    100% {
+        width: 110%;
+        height: 110%;
+        background: linear-gradient(to right, #3498db, #2890b9);
+    }
+}
