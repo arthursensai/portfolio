@@ -73,7 +73,7 @@ main {
 }
 
 .hero-paragraph:hover {
-    filter: drop-shadow(-5px -5px 100px #4f4848);
+    filter: drop-shadow(-5px -5px 100px #37505C);
     line-height: 28px;
     font-size: 20px;
 }
@@ -84,6 +84,7 @@ main {
     border-radius: 5px;
     min-width: 10px;
 }
+
 
 .social-media h2,
 .projects h2 {
@@ -184,7 +185,7 @@ main {
 
 
 .project {
-    width: 30%;
+    width: 50%;
     min-width: 200px;
     min-height: 150px;
     height: 100%;
@@ -292,4 +293,24 @@ a {
 .soon:hover::after {
     cursor: pointer;
     font-size: 28px;
+}
+
+/* for phone devices */
+
+@media (max-width: 750px) {
+    .hero {
+        flex-wrap: wrap;
+    }
+    .hero div {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-img {
+        width: 50%;
+    }
+    .hero-paragraph {
+        padding: 10%;
+    }
 }
