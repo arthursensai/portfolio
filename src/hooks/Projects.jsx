@@ -42,7 +42,7 @@ const Projects = () => {
       category: "Frontend",
       icon: <Layout className="text-green-600" />,
       image: "bg-gradient-to-br from-teal-500 to-blue-500",
-      demoUrl: "https://mohamedaytsidibah.netlify.app/",
+      demoUrl: "https://mohamedaitsidibah.netlify.app/",
       githubUrl: "https://github.com/arthursensai/portfolio",
       highlights: [
         "Responsive design for all device sizes",
