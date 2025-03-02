@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,35 +8,42 @@
     <title>Mohamed Ait Sidi Bah | Full Stack Developer</title>
     <meta name="description" content="Mohamed Ait Sidi Bah's portfolio showcasing web development projects and skills in React, Tailwind CSS, Node.js, and more." />
     
-    <!-- Open Graph Tags for social media preview -->
+    <!-- Open Graph Tags (for better sharing on social media) -->
     <meta property="og:title" content="Mohamed Ait Sidi Bah | Full Stack Developer" />
     <meta property="og:description" content="Explore Mohamed Ait Sidi Bah's portfolio, featuring projects in React, web development, and full stack solutions." />
     <meta property="og:url" content="https://mohamedaitsidibah.netlify.app" />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://mohamedaitsidibah.netlify.app/assets/preview-image.jpg" />
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Mohamed Ait Sidi Bah | Full Stack Developer" />
     <meta name="twitter:description" content="Explore Mohamed Ait Sidi Bah's portfolio, featuring projects in React, web development, and full stack solutions." />
-    
-    <!-- Favicon -->
-    <link rel="icon" href="./public/assets/favicon.svg" />
-    
+    <meta name="twitter:image" content="https://mohamedaitsidibah.netlify.app/assets/preview-image.jpg" />
+
+    <!-- Favicon (Google will recognize it properly now) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="msapplication-TileImage" content="/favicon.svg" />
+
     <!-- Keywords for SEO -->
     <meta name="keywords" content="Mohamed Ait Sidi Bah, full stack developer, web developer, React, Node.js, portfolio, front-end developer, back-end developer, JavaScript, web design" />
     <meta name="google-site-verification" content="qeN2fHhhYHXahrFMu5LXWQPGXhqlNr1qr2Cd1ZQXAhQ" />
-  </head>
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-66D380BMY7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    
+    <!-- Google Analytics Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-66D380BMY7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-66D380BMY7');
+    </script>
 
-    gtag('config', 'G-66D380BMY7');
-  </script>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1497277255485448"
-  crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1497277255485448"
+      crossorigin="anonymous"></script>
+  </head>
+  
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
