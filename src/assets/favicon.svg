@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Subtle gradient background for depth -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f5f7fa" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Circle with slight shadow for dimension -->
+  <circle cx="16" cy="16" r="15" fill="url(#bg-gradient)" />
+  <circle cx="16" cy="16" r="15" fill="none" stroke="#e2e8f0" stroke-width="0.5" />
+  
+  <!-- Improved M letter with better proportions -->
+  <path d="M7.5 22V9.5H10.2L14 18.2L17.8 9.5H20.5V22H17.5V14L14.5 21H13.5L10.5 14V22H7.5Z" fill="#1F2937" />
+  
+  <!-- Dot in blue with slight gradient for depth -->
+  <defs>
+    <radialGradient id="dot-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#2563EB" />
+    </radialGradient>
+  </defs>
+  <text 
+    x="20" 
+    y="22" 
+    font-family="Arial, sans-serif" 
+    font-weight="bold" 
+    font-size="24" 
+    fill="url(#dot-gradient)">
+    .
+  </text>
+  
+</svg>

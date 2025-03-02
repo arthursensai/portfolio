@@ -1,57 +1,106 @@
 import React from 'react';
+import { Github, Linkedin, Instagram, Mail, Heart } from 'lucide-react';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
+  // Social media links data
+  const socialLinks = [
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/mohamed-aytsidibah-7268b02a8/',
+      icon: <Linkedin size={20} />,
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/arthursensai',
+      icon: <Github size={20} />,
+    },
+    {
+      name: 'Instagram',
+      url: 'https://www.instagram.com/arthur_sensai/',
+      icon: <Instagram size={20} />,
+    },
+    {
+      name: 'Email',
+      url: 'mailto:contact@mohamed.dev',
+      icon: <Mail size={20} />,
+    }
+  ];
+  
+  // Navigation section data
+  const footerNavLinks = [
+    { name: 'Home', url: '#home' },
+    { name: 'Projects', url: '#projects' },
+    { name: 'About', url: '#about' },
+    { name: 'Contact', url: '#contact' }
+  ];
+
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <div>
-          <p>© {new Date().getFullYear()} Mohamed. All rights reserved.</p>
+    <footer className="bg-gray-900 text-white py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Top section with logo and nav links */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8 pb-8 border-b border-gray-800">
+          {/* Logo and tagline */}
+          <div className="flex flex-col space-y-4">
+            <div className="font-bold text-2xl">
+              M<span className="text-blue-500">.</span>
+            </div>
+            <p className="text-gray-400 max-w-xs">
+              Crafting digital experiences with passion and precision.
+            </p>
+          </div>
+          
+          {/* Quick links */}
+          <div className="flex flex-col space-y-4">
+            <h3 className="font-semibold text-lg">Quick Links</h3>
+            <nav className="flex flex-col space-y-2">
+              {footerNavLinks.map((link) => (
+                <a 
+                  key={link.name}
+                  href={link.url} 
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+          </div>
+          
+          {/* Contact info */}
+          <div className="flex flex-col space-y-4">
+            <h3 className="font-semibold text-lg">Contact</h3>
+            <p className="text-gray-400">contact@mohamed.dev</p>
+            <p className="text-gray-400">Fes, Morocco</p>
+          </div>
         </div>
         
-        <div className="flex space-x-6">
-          <a 
-            href="https://www.linkedin.com/in/mohamed-aytsidibah-7268b02a8/" 
-            className="text-gray-400 hover:text-white transition duration-300" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            aria-label="LinkedIn"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </a>
+        {/* Bottom section with copyright and social links */}
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex items-center space-x-1">
+            <p className="text-gray-400 text-sm">© {currentYear} Mohamed. Made with</p>
+            <Heart size={14} className="text-red-500" />
+            <p className="text-gray-400 text-sm">All rights reserved.</p>
+          </div>
           
-          <a 
-            href="https://github.com/arthursensai" 
-            className="text-gray-400 hover:text-white transition duration-300" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            aria-label="GitHub"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-          </a>
-          
-          <a 
-            href="https://www.instagram.com/arthur_sensai/" 
-            className="text-gray-400 hover:text-white transition duration-300" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            aria-label="Instagram"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-            </svg>
-          </a>
+          <div className="flex space-x-4">
+            {socialLinks.map((social) => (
+              <a 
+                key={social.name}
+                href={social.url} 
+                className="text-gray-400 hover:text-white transition-colors duration-300 p-2 rounded-full hover:bg-gray-800" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={social.name}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;
