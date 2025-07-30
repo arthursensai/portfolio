@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowUpRight, Github, ExternalLink, Code, Database, Layout } from 'lucide-react';
 
 const Projects = () => {
@@ -52,7 +52,6 @@ const Projects = () => {
     }
   ];
 
-  // Function to determine tag color based on technology
   const getTagColor = (tag) => {
     const colors = {
       "React": "bg-blue-100 text-blue-800",
@@ -69,7 +68,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="projects" className="py-10 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">Featured Projects</h2>

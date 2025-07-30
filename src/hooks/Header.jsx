@@ -6,7 +6,6 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   
-  // Enhanced navigation items with icons
   const navItems = [
     { href: "#home", label: "Home", icon: Home },
     { href: "#about", label: "About", icon: User },
@@ -15,13 +14,10 @@ const Header = () => {
     { href: "#contact", label: "Contact", icon: Mail }
   ];
   
-  // Handle scroll event for shadow and active section tracking
   useEffect(() => {
     const handleScroll = () => {
-      // Add shadow when scrolled
       setScrolled(window.scrollY > 10);
       
-      // Track active section
       const sections = navItems.map(item => item.href.substring(1));
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
@@ -41,7 +37,6 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  // Handle ESC key and click outside to close mobile menu
   useEffect(() => {
     const handleEscKey = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -50,10 +45,10 @@ const Header = () => {
     };
     
     if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleEscKey);
     } else {
-      document.body.style.overflow = 'auto'; // Restore scrolling when menu is closed
+      document.body.style.overflow = 'auto';
     }
     
     return () => {
@@ -62,7 +57,6 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
   
-  // Smooth scroll function
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const targetId = href.substring(1);
@@ -88,7 +82,7 @@ const Header = () => {
           <a 
             href="#home" 
             onClick={(e) => handleNavClick(e, '#home')}
-            className="font-bold text-2xl text-gray-800 hover:text-blue-600 transition-all duration-300 transform hover:scale-105"
+            className="font-bold text-4xl text-gray-800 hover:text-blue-600 transition-all duration-300 transform hover:scale-105"
           >
             M<span className="text-blue-600">.</span>
           </a>
