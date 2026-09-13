@@ -80,36 +80,7 @@ const Header = () => {
   };
 
   return (
-    <header className={`bg-white/90 backdrop-blur-sm fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : ''}`}>
-      {/* Top status strip - real content, not just decoration */}
-      <div className="hidden md:flex items-center justify-between bg-gray-900 text-gray-300 text-xs px-4 sm:px-6 lg:px-8 py-1.5">
-        <div className="flex items-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          Open to Fachinformatiker Ausbildung opportunities · 2027
-        </div>
-        <div className="flex items-center gap-4">
-          {socialLinks.map((social) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.name}
-                className="flex items-center gap-1.5 hover:text-white transition-colors"
-              >
-                <Icon size={13} />
-                {social.name}
-              </a>
-            );
-          })}
-        </div>
-      </div>
-
+    <header className={`bg-white fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : 'shadow-sm'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -125,24 +96,38 @@ const Header = () => {
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
-              const Icon = item.icon;
 
               return (
                 <div key={item.href} className="relative py-4">
                   <a
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`flex items-center gap-1 font-medium transition duration-300 ${
+                    className={`font-medium transition duration-300 ${
                       isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
-                    <Icon size={16} className="hidden sm:block" />
                     {item.label}
                   </a>
                   {isActive && (
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
                   )}
                 </div>
+              );
+            })}
+
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="text-gray-500 hover:text-blue-600 transition-colors"
+                >
+                  <Icon size={18} />
+                </a>
               );
             })}
 
@@ -156,98 +141,78 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-4">
-            <button
-              className="md:hidden flex items-center text-gray-700 hover:text-blue-600 transition duration-300"
-              onClick={() => setMobileMenuOpen(true)}
-              aria-label="Open mobile menu"
-            >
-              <Menu size={24} />
-            </button>
-          </div>
+          <button
+            className="md:hidden flex items-center text-gray-700 hover:text-blue-600 transition duration-300"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open mobile menu"
+          >
+            <Menu size={26} />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex justify-end transition-all duration-300 ${
-          mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            setMobileMenuOpen(false);
-          }
-        }}
-      >
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
         <div
-          className={`w-72 bg-white h-full p-5 shadow-xl transform transition-all duration-300 flex flex-col ${
-            mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}
+          className="md:hidden fixed inset-0 z-50 bg-black/60"
+          onClick={() => setMobileMenuOpen(false)}
         >
-          <div className="flex justify-end">
-            <button
-              className="text-gray-700 hover:text-blue-600 transition duration-300"
-              onClick={() => setMobileMenuOpen(false)}
-              aria-label="Close mobile menu"
-            >
-              <X size={24} />
-            </button>
-          </div>
+          <div
+            className="absolute top-0 right-0 h-full w-72 bg-white shadow-xl flex flex-col p-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-end mb-6">
+              <button
+                className="text-gray-700 hover:text-blue-600 transition duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close mobile menu"
+              >
+                <X size={24} />
+              </button>
+            </div>
 
-          {/* Status badge, mobile */}
-          <div className="flex items-center gap-2 text-xs text-gray-600 mt-2 mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            Open to Ausbildung opportunities · 2027
-          </div>
+            <nav className="flex flex-col">
+              {navItems.map((item) => {
+                const isActive = activeSection === item.href.substring(1);
+                const Icon = item.icon;
 
-          <nav className="flex flex-col">
-            {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1);
-              const Icon = item.icon;
-
-              return (
-                <div key={item.href} className="relative">
+                return (
                   <a
+                    key={item.href}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className={`flex items-center gap-2 font-medium transition duration-300 py-3 ${
+                    className={`flex items-center gap-3 font-medium transition duration-300 py-3 border-b border-gray-100 ${
                       isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
                     <Icon size={20} />
                     {item.label}
                   </a>
-                  {isActive && (
-                    <div className="absolute left-0 w-1 h-8 bg-blue-600 rounded-r my-auto top-0 bottom-0"></div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
+                );
+              })}
+            </nav>
 
-          <div className="mt-auto flex items-center gap-4 pt-6 border-t border-gray-100">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
-                >
-                  <Icon size={18} />
-                  {social.name}
-                </a>
-              );
-            })}
+            <div className="mt-auto flex items-center gap-5 pt-6 border-t border-gray-100">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                  >
+                    <Icon size={18} />
+                    {social.name}
+                  </a>
+                );
+              })}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
