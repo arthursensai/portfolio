@@ -21,13 +21,13 @@ const DynamicTitle = memo(() => {
           .typeString("a Full-Stack Developer")
           .pauseFor(2000)
           .deleteAll()
-          .typeString("a Chess Player ♟️")
+          .typeString("a Chess Player")
           .pauseFor(1800)
           .deleteAll()
-          .typeString("an AI Learner 🤖")
+          .typeString("an AI Learner")
           .pauseFor(1800)
           .deleteAll()
-          .typeString("a Dreamer 🚀")
+          .typeString("a Dreamer")
           .pauseFor(2000)
           .start();
       }}
