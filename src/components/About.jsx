@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { Swords, BookOpenText, Puzzle } from "lucide-react";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -52,22 +53,19 @@ const About = () => {
 
   const interests = [
     {
-      emoji: "♟",
+      icon: <Swords className="h-6 w-6" />,
       title: "Chess",
       description: "Strategic thinking & analytical problem-solving",
-      color: "bg-amber-50 border-amber-200",
     },
     {
-      emoji: "🤖",
-      title: "AI & Automation",
-      description: "Building intelligent and adaptive applications",
-      color: "bg-blue-50 border-blue-200",
+      icon: <Puzzle className="h-6 w-6" />,
+      title: "Systems Thinking",
+      description: "Breaking down complex problems into clean solutions",
     },
     {
-      emoji: "φ",
+      icon: <BookOpenText className="h-6 w-6" />,
       title: "Philosophy",
       description: "Exploring profound ideas & critical thinking",
-      color: "bg-green-50 border-green-200",
     },
   ];
 
@@ -165,23 +163,32 @@ const About = () => {
           </div>
 
           <motion.div variants={itemVariants} className="pt-8">
-            <h3 className="text-2xl font-bold text-center mb-10 text-gray-800">
-              Personal Interests
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {interests.map((interest, index) => (
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-3 mb-3">
+                <div className="h-px w-6 bg-blue-500" />
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">
+                  Beyond Code
+                </span>
+                <div className="h-px w-6 bg-blue-500" />
+              </div>
+              <h3 className="font-serif text-2xl font-bold text-gray-800">
+                Personal Interests
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {interests.map((interest) => (
                 <motion.div
                   key={interest.title}
                   variants={interestVariants}
-                  className={`p-6 rounded-lg shadow-sm hover:shadow-lg border-2 ${interest.color} transition-all duration-300 transform hover:-translate-y-2`}
+                  className="group relative rounded-lg border border-gray-200 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg"
                 >
-                  <div className="text-4xl mb-4 text-blue-600">
-                    {interest.emoji}
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                    {interest.icon}
                   </div>
                   <div className="font-semibold text-gray-800 text-lg mb-2">
                     {interest.title}
                   </div>
-                  <p className="text-gray-600">{interest.description}</p>
+                  <p className="text-gray-600 text-sm leading-relaxed">{interest.description}</p>
                 </motion.div>
               ))}
             </div>
