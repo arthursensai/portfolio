@@ -1,6 +1,5 @@
-# **Mohamed** Ait Sidi Bah portfolio's source code
+# **Mohamemd** Ait Sidi Bah portfolio's source code
 
-In this repostry you'll find ths source code of mohamed website
-
+In this repostry you'll find ths source code of my portfolio
 it will be provided soon
-[Link](https://mohamedaitsidibah.netlify.app/)
+[Link](https://mohammedaitsidibah.me/)
