@@ -1,38 +1,33 @@
-import { memo } from "react";
-import Typewriter from "typewriter-effect";
+import { useEffect, useState } from "react";
 
-const DynamicTitle = memo(() => {
-  return (
-    <Typewriter
-      options={{
-        loop: true,
-        delay: 60,
-        deleteSpeed: 40,
-        cursor: "|",
-        autoStart: true,
-        wrapperClassName: "text-blue-300",
-        cursorClassName: "text-blue-500",
-      }}
-      onInit={(typewriter) => {
-        typewriter
-          .typeString("Mohamed")
-          .pauseFor(1500)
-          .deleteAll()
-          .typeString("a Full-Stack Developer")
-          .pauseFor(2000)
-          .deleteAll()
-          .typeString("a Chess Player")
-          .pauseFor(1800)
-          .deleteAll()
-          .typeString("an AI Learner")
-          .pauseFor(1800)
-          .deleteAll()
-          .typeString("a Dreamer")
-          .pauseFor(2000)
-          .start();
-      }}
-    />
-  );
-});
+const titles = [
+  "Mohamed",
+  "a Full-Stack Developer",
+  "a Chess Player",
+  "an AI Learner",
+  "a Dreamer",
+];
+
+const DynamicTitle = () => {
+  const [text, setText] = useState(titles[0]);
+
+  useEffect(() => {
+    let titleIndex = 0;
+    let timeout;
+
+    const cycle = () => {
+      titleIndex = (titleIndex + 1) % titles.length;
+      setText(titles[titleIndex]);
+
+      timeout = setTimeout(cycle, 2500);
+    };
+
+    timeout = setTimeout(cycle, 2500);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return <span>{text}</span>;
+};
 
 export default DynamicTitle;

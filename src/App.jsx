@@ -1,4 +1,3 @@
-import './index.css';
 import Header from './components/Header.jsx';
 import Home from './components/Hero.jsx';
 import About from './components/About.jsx';
