@@ -12,7 +12,7 @@ const Projects = () => {
       category: "Full Stack",
       icon: <BookOpen className="text-blue-600" />,
       image: "bg-gradient-to-br from-blue-500 to-green-500",
-      demoUrl: "https://waraq1.vercel.app/",
+      demoUrl: "https://waraq.tech",
       githubUrl: "https://github.com/arthursensai/waraq",
       highlights: [
         "Role-based access control with Supabase Auth",
