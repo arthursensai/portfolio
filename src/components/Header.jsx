@@ -16,7 +16,7 @@ const Header = () => {
 
   const socialLinks = [
     { name: 'GitHub', url: 'https://github.com/arthursensai', icon: Github },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohamed-ait-sidi-bah', icon: Linkedin },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohammed-ait-sidi-bah', icon: Linkedin },
   ];
 
   useEffect(() => {
