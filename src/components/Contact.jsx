@@ -36,7 +36,7 @@ const Contact = () => {
     },
     { 
       name: 'LinkedIn', 
-      url: 'https://www.linkedin.com/in/mohamed-aytsidibah-7268b02a8/', // Fixed the URL
+      url: 'https://www.linkedin.com/in/mohammed-ait-sidi-bah/', // Fixed the URL
       icon: Linkedin,
       color: 'hover:text-blue-600'
     },
