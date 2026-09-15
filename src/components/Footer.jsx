@@ -8,7 +8,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/mohamed-ait-sidi-bah/",
+      url: "https://www.linkedin.com/in/mohammed-ait-sidi-bah/",
       icon: <Linkedin size={20} />,
     },
     {
