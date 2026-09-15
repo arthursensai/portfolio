@@ -4,6 +4,17 @@
   body {
     font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   }
+
+  /* Anchor navigation accounts for the fixed header height */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 @layer utilities {

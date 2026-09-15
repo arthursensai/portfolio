@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Swords, BookOpenText, Puzzle } from "lucide-react";
@@ -69,21 +69,17 @@ const About = () => {
     },
   ];
 
-  const skills = [
-    "Next.js",
-    "TypeScript",
-    "React",
-    "Supabase",
-    "PostgreSQL",
-    "React Query",
-    "Node.js",
-    "Tailwind CSS"
+  const techGroups = [
+    { label: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
+    { label: "Backend", items: ["Node.js", "PostgreSQL", "Supabase"] },
+    { label: "Tools", items: ["Git", "GitHub", "VS Code", "Vercel / Netlify"] },
+    { label: "Currently Exploring", items: ["AI", "RAG", "LLM applications"] },
   ];
 
   return (
     <section
       id="about"
-      className="py-10 bg-gradient-to-b from-white to-gray-50"
+      className="py-20 bg-gradient-to-b from-white to-gray-50"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
@@ -92,24 +88,20 @@ const About = () => {
           animate={controls}
           className="space-y-16"
         >
-          <motion.div variants={itemVariants} className="text-center mb-4">
+          <motion.div variants={itemVariants} className="mb-4">
             <div className="inline-flex items-center gap-3">
               <div className="h-px w-6 bg-blue-500" />
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">
                 About
               </span>
-              <div className="h-px w-6 bg-blue-500" />
             </div>
           </motion.div>
 
           <motion.h2
             variants={itemVariants}
-            className="font-serif text-4xl font-bold text-center mb-12 text-gray-800 relative inline-block mx-auto w-full"
+            className="font-serif text-3xl sm:text-4xl font-bold mb-12 text-gray-900"
           >
-            <span className="relative inline-block px-2 z-10">
-              About Me
-              <span className="absolute bottom-0 left-0 w-full h-3 bg-blue-100 -z-10 transform -rotate-1"></span>
-            </span>
+            About Me
           </motion.h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -117,8 +109,8 @@ const About = () => {
               <div className="relative z-10 overflow-hidden rounded-lg shadow-xl border border-gray-100">
                 <img
                   className="w-full h-auto rounded-lg transition-transform duration-500 group-hover:scale-105"
-                  src="/assets/profileImage.svg"
-                  alt="Developer Profile Illustration"
+                  src="/assets/about-mark.svg"
+                  alt="Mohammed Ait Sidi Bah — build, learn, iterate"
                 />
               </div>
               <div className="absolute -inset-3 -z-10 rounded-xl border border-blue-100" />
@@ -127,35 +119,44 @@ const About = () => {
             <motion.div variants={containerVariants} className="space-y-8">
               <motion.div variants={itemVariants} className="space-y-6">
                 <p className="text-gray-700 leading-relaxed text-lg">
-                  Hi, I'm{" "}
-                  <span className="font-serif italic font-bold text-blue-600">Mohammed!</span> A
-                  self-taught full-stack developer building complete, real-world
-                  web applications from the ground up.
+                  I'm{" "}
+                  <span className="font-serif italic font-bold text-blue-600">
+                    Mohammed Ait Sidi Bah
+                  </span>
+                  , a self-taught full-stack developer from Morocco.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  My flagship project, Waraq, is a full-stack document
-                  tracking application built with Next.js, TypeScript,
-                  Supabase, and PostgreSQL. I enjoy crafting clean front-end
-                  experiences backed by solid, scalable architecture.
+                  I enjoy turning ideas into working software — from
+                  designing the data model and application architecture to
+                  building the interface, backend, and deployment pipeline.
                 </p>
                 <p className="text-gray-700 leading-relaxed">
-                  Beyond coding, I'm fascinated by philosophy, strategic games
-                  like chess, and the art of creative problem-solving.
+                  My main project is Waraq, a full-stack reading and document
+                  management platform that I've been building from the
+                  ground up. I'm particularly interested in TypeScript,
+                  Next.js, PostgreSQL, developer tooling, and AI-powered
+                  applications.
+                </p>
+                <p className="text-gray-700 leading-relaxed">
+                  I'm currently focused on becoming a stronger software
+                  engineer by building, breaking, learning, and iterating.
                 </p>
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">
-                  Technical Toolkit
+                <h3 className="text-base font-semibold text-gray-800 mb-4">
+                  Technologies I Work With
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {skills.map((skill, index) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 bg-white border border-blue-200 rounded-full text-blue-600 text-sm font-medium shadow-sm"
-                    >
-                      {skill}
-                    </span>
+                <div className="space-y-4">
+                  {techGroups.map((group) => (
+                    <div key={group.label} className="flex flex-col sm:flex-row sm:items-baseline gap-1.5 sm:gap-3">
+                      <span className="text-xs font-semibold uppercase tracking-wide text-gray-400 w-40 shrink-0">
+                        {group.label}
+                      </span>
+                      <span className="text-sm text-gray-700">
+                        {group.items.join(" · ")}
+                      </span>
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -163,15 +164,14 @@ const About = () => {
           </div>
 
           <motion.div variants={itemVariants} className="pt-8">
-            <div className="text-center mb-10">
+            <div className="mb-10">
               <div className="inline-flex items-center gap-3 mb-3">
                 <div className="h-px w-6 bg-blue-500" />
                 <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">
                   Beyond Code
                 </span>
-                <div className="h-px w-6 bg-blue-500" />
               </div>
-              <h3 className="font-serif text-2xl font-bold text-gray-800">
+              <h3 className="font-serif text-2xl font-bold text-gray-900">
                 Personal Interests
               </h3>
             </div>
@@ -192,15 +192,6 @@ const About = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="text-center pt-6">
-            <a
-              href="#contact"
-              className="inline-block px-8 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-md hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
-            >
-              Let's Connect
-            </a>
           </motion.div>
         </motion.div>
       </div>

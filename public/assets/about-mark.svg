@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="about-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#eef2ff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="600" rx="16" ry="16" fill="url(#about-bg)" />
+
+  <!-- Subtle dot grid -->
+  <g fill="#c7d2fe" opacity="0.5">
+    <circle cx="60" cy="60" r="2" />
+    <circle cx="100" cy="60" r="2" />
+    <circle cx="140" cy="60" r="2" />
+    <circle cx="60" cy="100" r="2" />
+    <circle cx="100" cy="100" r="2" />
+    <circle cx="140" cy="100" r="2" />
+    <circle cx="660" cy="500" r="2" />
+    <circle cx="700" cy="500" r="2" />
+    <circle cx="740" cy="500" r="2" />
+    <circle cx="660" cy="540" r="2" />
+    <circle cx="700" cy="540" r="2" />
+    <circle cx="740" cy="540" r="2" />
+  </g>
+
+  <!-- Thin frame -->
+  <rect x="60" y="60" width="680" height="480" rx="8" ry="8" fill="none" stroke="#c7d2fe" stroke-width="1" />
+
+  <!-- Monogram -->
+  <text
+    x="400"
+    y="330"
+    text-anchor="middle"
+    font-family="Georgia, 'Playfair Display', serif"
+    font-style="italic"
+    font-weight="700"
+    font-size="220"
+    fill="#1e293b"
+  >M<tspan fill="#3b82f6" font-style="normal">.</tspan></text>
+
+  <!-- Accent line -->
+  <line x1="330" y1="380" x2="470" y2="380" stroke="#3b82f6" stroke-width="3" />
+
+  <text
+    x="400"
+    y="420"
+    text-anchor="middle"
+    font-family="Inter, sans-serif"
+    font-size="16"
+    letter-spacing="4"
+    fill="#64748b"
+  >BUILD · LEARN · ITERATE</text>
+</svg>

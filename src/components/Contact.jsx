@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Send,
   Mail,
@@ -122,11 +122,11 @@ const Contact = () => {
             <div className="h-px w-6 bg-blue-500" />
           </div>
           <h2 className="font-serif text-3xl font-bold text-gray-800 mb-4">
-            Get In Touch
+            Let's build something useful.
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            I'm always open to discussing new projects, creative ideas, or
-            opportunities to be part of your vision.
+            I'm always interested in interesting software problems, learning
+            opportunities, and conversations with other builders.
           </p>
         </div>
 

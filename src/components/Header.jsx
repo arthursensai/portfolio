@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Code, Briefcase, Mail, Github, Linkedin } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Briefcase, User, Mail, Github, Linkedin } from 'lucide-react';
+
+const navItems = [
+  { href: "#work", label: "Work", icon: Briefcase },
+  { href: "#about", label: "About", icon: User },
+  { href: "#contact", label: "Contact", icon: Mail },
+];
+
+const socialLinks = [
+  { name: 'GitHub', url: 'https://github.com/arthursensai', icon: Github },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohammed-ait-sidi-bah', icon: Linkedin },
+];
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-
-  const navItems = [
-    { href: "#home", label: "Home", icon: Home },
-    { href: "#about", label: "About", icon: User },
-    { href: "#skills", label: "Skills", icon: Code },
-    { href: "#projects", label: "Projects", icon: Briefcase },
-    { href: "#contact", label: "Contact", icon: Mail }
-  ];
-
-  const socialLinks = [
-    { name: 'GitHub', url: 'https://github.com/arthursensai', icon: Github },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/mohammed-ait-sidi-bah', icon: Linkedin },
-  ];
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
+    if (!isHome) return;
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 10);
 
-      const sections = navItems.map(item => item.href.substring(1));
-      const currentSection = sections.find(section => {
+      const sections = navItems.map((item) => item.href.substring(1));
+      const currentSection = sections.find((section) => {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
@@ -40,7 +43,13 @@ const Header = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isHome]);
+
+  useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+    }
+  }, [isHome]);
 
   useEffect(() => {
     const handleEscKey = (e) => {
@@ -62,52 +71,37 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
-  const handleNavClick = (e, href) => {
-    e.preventDefault();
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop - 80,
-        behavior: 'smooth'
-      });
-
-      if (mobileMenuOpen) {
-        setMobileMenuOpen(false);
-      }
-    }
-  };
+  const destinationFor = (href) => (isHome ? href : `/${href}`);
 
   return (
     <header className={`bg-white fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'shadow-lg' : 'shadow-sm'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <a
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
+          <Link
+            to="/"
+            aria-label="Mohammed Ait Sidi Bah — home"
             className="font-serif italic font-bold text-3xl text-gray-800 hover:text-blue-600 transition-all duration-300 transform hover:scale-105"
           >
             Mohammed<span className="text-blue-600 not-italic">.</span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => {
-              const isActive = activeSection === item.href.substring(1);
+              const isActive = isHome && activeSection === item.href.substring(1);
 
               return (
                 <div key={item.href} className="relative py-4">
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
+                  <Link
+                    to={destinationFor(item.href)}
+                    onClick={() => setMobileMenuOpen(false)}
                     className={`font-medium transition duration-300 ${
                       isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                   {isActive && (
                     <div className="absolute bottom-0 left-0 w-full h-0.5 bg-blue-600"></div>
                   )}
@@ -131,13 +125,12 @@ const Header = () => {
               );
             })}
 
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+            <Link
+              to={destinationFor('#contact')}
               className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-md hover:bg-blue-700 transition-all duration-300"
             >
               Let's Talk
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -173,21 +166,21 @@ const Header = () => {
 
             <nav className="flex flex-col">
               {navItems.map((item) => {
-                const isActive = activeSection === item.href.substring(1);
+                const isActive = isHome && activeSection === item.href.substring(1);
                 const Icon = item.icon;
 
                 return (
-                  <a
+                  <Link
                     key={item.href}
-                    href={item.href}
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    to={destinationFor(item.href)}
+                    onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-3 font-medium transition duration-300 py-3 border-b border-gray-100 ${
                       isActive ? 'text-blue-600' : 'text-gray-700 hover:text-blue-600'
                     }`}
                   >
                     <Icon size={20} />
                     {item.label}
-                  </a>
+                  </Link>
                 );
               })}
             </nav>

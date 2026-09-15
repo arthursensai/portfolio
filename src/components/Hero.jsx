@@ -1,34 +1,4 @@
 import { memo } from "react";
-import DynamicTitle from "../components/DynamicTitle";
-
-const SkillTags = memo(() => {
-  const skills = [
-    "Next.js",
-    "TypeScript",
-    "React",
-    "Supabase",
-    "PostgreSQL",
-    "Node.js",
-  ];
-
-  return (
-    <div className="flex flex-wrap gap-2 mb-8">
-      {skills.map((skill) => (
-        <div
-          key={skill}
-          className="px-4 py-2 bg-blue-950/80 text-blue-200 rounded-full text-sm font-medium 
-                     transition-all duration-300 hover:bg-blue-800 hover:scale-105 hover:shadow-lg
-                     focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50"
-          tabIndex="0"
-          role="button"
-          aria-label={`${skill} technology`}
-        >
-          {skill}
-        </div>
-      ))}
-    </div>
-  );
-});
 
 const BackgroundElements = memo(() => (
   <div
@@ -59,73 +29,67 @@ const BackgroundElements = memo(() => (
   </div>
 ));
 
-const Home = () => {
-  const handleScrollTo = (elementId) => {
-    const element = document.getElementById(elementId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+const Hero = () => {
   return (
     <>
       <section
         id="home"
-        className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900"
-        role="banner"
-        aria-label="Hero section introducing Mohamed, Full-Stack Developer"
+        className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900 pt-24 pb-16"
+        aria-label="Introduction: Mohammed Ait Sidi Bah, Full-Stack Developer &amp; Builder"
       >
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
           <div className="max-w-2xl animate-fade-in">
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-6 bg-blue-400" />
               <span className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-300">
-                Full-Stack Developer
+                Full-Stack Developer &amp; Builder
               </span>
             </div>
 
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-[1.08]">
-              Hi, I'm{" "}
-              <span className="relative inline-block italic text-blue-300">
-                <DynamicTitle />
-                <span
-                  className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 transform origin-left scale-x-0 animate-expand"
-                  aria-hidden="true"
-                />
-              </span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 leading-[1.08]">
+              Mohammed Ait Sidi Bah
             </h1>
 
-            <p className="text-xl text-slate-200 mb-6 leading-relaxed max-w-xl">
-              Full-Stack Developer specializing in React, Next.js, and
-              backend development. Passionate about creating responsive,
-              user-friendly web applications with modern technologies.
+            <p className="text-xl text-slate-200 mb-4 leading-relaxed max-w-xl">
+              I build useful software from idea to production.
             </p>
 
-            <SkillTags />
+            <p className="text-base text-slate-300 mb-8 leading-relaxed max-w-xl">
+              Currently building{" "}
+              <a
+                href="#waraq"
+                className="text-blue-300 underline underline-offset-4 decoration-blue-400/50 hover:text-blue-200 hover:decoration-blue-300 transition-colors"
+              >
+                Waraq
+              </a>{" "}
+              — a full-stack reading and document management platform.
+            </p>
 
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => handleScrollTo("projects")}
+              <a
+                href="#waraq"
                 className="px-6 py-3 bg-blue-700 text-white rounded-md font-medium 
                          hover:bg-blue-600 focus:bg-blue-600
                          transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg 
                          focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50
-                         active:transform active:translate-y-0 hover:cursor-pointer"
-                aria-label="View my projects"
+                         active:transform active:translate-y-0"
+                aria-label="Explore Waraq, my featured project"
               >
-                View My Work
-              </button>
-              <button
-                onClick={() => handleScrollTo("contact")}
+                Explore Waraq
+              </a>
+              <a
+                href="https://github.com/arthursensai"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 border-2 border-blue-400 text-blue-300 rounded-md font-medium 
                          hover:bg-blue-900/50 focus:bg-blue-900/50
                          transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg 
                          focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50
-                         active:transform active:translate-y-0 hover:cursor-pointer"
-                aria-label="Contact me"
+                         active:transform active:translate-y-0"
+                aria-label="View my GitHub profile"
               >
-                Contact Me
-              </button>
+                View GitHub
+              </a>
             </div>
           </div>
         </div>
@@ -133,17 +97,7 @@ const Home = () => {
         <BackgroundElements />
       </section>
 
-      {/* Optimized CSS with better performance */}
-      <style jsx>{`
-        @keyframes expand {
-          0% {
-            transform: scaleX(0);
-          }
-          100% {
-            transform: scaleX(1);
-          }
-        }
-
+      <style>{`
         @keyframes fade-in {
           0% {
             opacity: 0;
@@ -153,11 +107,6 @@ const Home = () => {
             opacity: 1;
             transform: translateY(0);
           }
-        }
-
-        .animate-expand {
-          animation: expand 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-          will-change: transform;
         }
 
         .animate-fade-in {
@@ -178,4 +127,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Hero;
